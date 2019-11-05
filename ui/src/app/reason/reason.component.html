@@ -1,0 +1,7 @@
+<div class="chat-area">
+    <h1>Why is bill upset?</h1>
+    <div class="reason-box" *ngIf="reason">{{ reason.text }}</div>
+    <div class="why-button">
+        <button mat-button color="primary" (click)="getReason()">Why</button>
+    </div>
+</div>

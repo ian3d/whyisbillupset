@@ -1,0 +1,8 @@
+.chat-area {
+    display: flex;
+    flex-direction: column;
+    max-width: 900px;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+}
