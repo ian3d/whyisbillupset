@@ -9,9 +9,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.whyisbillupset.wibu.persistence.documents.Reaction;
+import com.whyisbillupset.wibu.persistence.request.ReactionRequest;
 import com.whyisbillupset.wibu.repositories.ReactionRepository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -26,15 +29,14 @@ public class ReactionController {
 	ReactionRepository reactionRepository;
 	
 	@PostMapping("add")
-	public Reaction addReaction(@RequestBody String reasonId, 
-								@RequestBody boolean liked) {
-		log.debug("Adding new reaction reason[{}], liked[{}]", reasonId, liked);
-		return reactionRepository.save(new Reaction(reasonId, liked));
+	public Reaction addReaction(@RequestBody ReactionRequest request) {
+		log.debug("Adding new reaction reason[{}], liked[{}]", request.getReasonId(), request.isLiked());
+		return reactionRepository.save(new Reaction( request.getReasonId(), request.isLiked()));
 	}
 	
 	@PutMapping("update")
-	public Reaction updateReaction(@RequestBody String reactionId, 
-									@RequestBody boolean liked) {
+	public Reaction updateReaction(@RequestParam String reactionId, 
+									@RequestParam boolean liked) {
 		log.debug("Updating reaction [{}] to liked[{}]", reactionId, liked);
 		Reaction reaction = reactionRepository.findById(reactionId)
 				.orElseThrow();
