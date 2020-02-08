@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ReasonService } from '../reason.service';
-import { Reason } from '../reason';
+import { ReasonService } from '../service/reason.service';
+import { Reason } from '../model/reason';
+
 
 @Component({
   selector: 'app-reason',

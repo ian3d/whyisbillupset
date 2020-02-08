@@ -12,25 +12,24 @@ import com.whyisbillupset.wibu.persistence.documents.Reason;
 import com.whyisbillupset.wibu.repositories.ReasonRepository;
 
 import lombok.extern.slf4j.Slf4j;
-import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/reason")
 @CrossOrigin(value = "http://localhost:4200")
 @Slf4j
-public class ReasonsController {
+public class ReasonController {
 	
 	@Autowired
 	ReasonRepository reasonRepository;
 	
 	@GetMapping
-	public Mono<Reason> getRandomReason() {
+	public Reason getRandomReason() {
 		log.debug("Random reason requested");
 		return reasonRepository.findRandom();
 	}
 	
-	@PostMapping
-	public Mono<Reason> addReason(@RequestBody String reason) {
+	@PostMapping("add")
+	public Reason addReason(@RequestBody String reason) {
 		return reasonRepository.save(new Reason(reason));
 	}
 }

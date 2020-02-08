@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Reason } from './reason';
+import { Reason } from '../model/reason';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
