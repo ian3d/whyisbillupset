@@ -10,7 +10,6 @@
             <i class="material-icons-outlined" *ngIf="!reaction || reaction.liked == true">thumb_down</i>
             <i class="material-icons" *ngIf="reaction && reaction.liked == false">thumb_down</i>
         </button>
-        <p *ngIf="reaction">Liked {{ reaction.liked }}</p>
     </div>
     <div class="why-button">
         <button mat-button color="primary" (click)="getReason()">Why</button>
